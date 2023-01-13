@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Box } from "@mui/material";
-import Exercises from "../Components/Exercises";
+import Exercises from "../Components/Exercises/Exercises";
 import HeroBanner from "../Components/HeroBanner";
 import SearchExercises from "../Components/SearchExercieses/SearchExercises";
 

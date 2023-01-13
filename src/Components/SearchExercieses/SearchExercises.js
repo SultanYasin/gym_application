@@ -2,7 +2,7 @@ import { Stack, TextField, Typography, Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { Box } from "@mui/system";
 import { exerciseOptions, fetchData } from "../../UtilityFunctions/FetchData";
-import HorizontalScrollbar from "../HorizontalScrollbar";
+import HorizontalScrollbar from "../Exercises/HorizontalScrollbar";
 
 const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
   const [search, setSearch] = useState("");
@@ -53,6 +53,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
       >
         Awesome Exercises You <br /> Should Know
       </Typography>
+
       <Box position="relative" mb="72px">
         <TextField
           height="76px"
