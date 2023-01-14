@@ -2,9 +2,10 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { Box } from "@mui/material";
 import Home from "./Pages/Home";
-import ExerciesDetail from "./Pages/ExerciseDetail";
+
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer";
+import ExerciseDetail from "./Pages/ExerciseDetail";
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/exercies/:id" element={<ExerciesDetail />} />
+        <Route path="/exercise/:id" element={<ExerciseDetail />} />
       </Routes>
 
 
