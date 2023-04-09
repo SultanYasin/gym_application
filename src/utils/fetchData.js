@@ -1,4 +1,4 @@
-export const exerciseOptions = {
+/* export const exerciseOptions = {
   method: 'GET',
   headers: {
     'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
@@ -20,3 +20,4 @@ export const fetchData = async (url, options) => {
 
   return data;
 };
+ */
