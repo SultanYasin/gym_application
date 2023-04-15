@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 
-import EditTodo from "./EditTodo";
+import Edit from "./Edit";
 
 const List = () => {
   const [todos, setTodos] = useState([]);
@@ -44,7 +44,7 @@ const List = () => {
             <tr key={todo.id}>
               <td>{todo.description}</td>
               <td>
-                <EditTodo todo={todo} />
+                <Edit todo={todo} />
               </td>
               <td>
                 <button

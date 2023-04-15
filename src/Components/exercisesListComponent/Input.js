@@ -36,4 +36,4 @@ const Input = () => {
   );
 };
 
-export default InputTodo;
+export default Input;
