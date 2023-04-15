@@ -4,6 +4,17 @@ import Edit from "./Edit";
 
 const List = () => {
   const [todos, setTodos] = useState([]);
+  const [completedTodos, setCompletedTodos] = useState([]);
+
+  const handleCheckboxChange = (event, todo) => {
+    if (event.target.checked) {
+      setCompletedTodos((prevState) => [...prevState, todo]);
+    } else {
+      setCompletedTodos((prevState) =>
+        prevState.filter((completedTodo) => completedTodo.id !== todo.id)
+      );
+    }
+  };
 
   const deleteTodo = async (id) => {
     try {
@@ -27,15 +38,18 @@ const List = () => {
     }
   };
 
-  useEffect(() => {getTodos() }, []);
+  useEffect(() => {
+    getTodos();
+  }, []);
 
   return (
     <div>
       <table className="table mt-5 text-center">
         <thead>
           <tr>
-            <th>Description</th>
+            <th>Exercise name</th>
             <th>Edit</th>
+            <th>Completed</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -45,6 +59,15 @@ const List = () => {
               <td>{todo.description}</td>
               <td>
                 <Edit todo={todo} />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  checked={completedTodos.some(
+                    (completedTodo) => completedTodo.id === todo.id
+                  )}
+                  onChange={(event) => handleCheckboxChange(event, todo)}
+                />
               </td>
               <td>
                 <button

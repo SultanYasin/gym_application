@@ -1,18 +1,17 @@
 import React from "react";
 import { HashRouter } from "react-router-dom";
-
 import List from "./List";
 import Input from "./Input";
 
-function Exercises() {
+function ExercisesList() {
   return (
-    <div>
-      <HashRouter>
+    <div style={{maxWidth: '70%', margin:"auto"}}>
+     
         <Input />
         <List />
-      </HashRouter>
+     
     </div>
   );
 }
 
-export default Exercises;
+export default ExercisesList;

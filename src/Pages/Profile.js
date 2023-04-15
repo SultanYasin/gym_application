@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import ExercisesList from "../components/exercisesListComponent/Exercises";
 
 function Profile() {
   return (
-    <div>Profile</div>
-  )
+    <div>
+      <ExercisesList />
+    </div>
+  );
 }
 
-export default Profile
+export default Profile;

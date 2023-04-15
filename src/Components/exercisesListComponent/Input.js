@@ -3,7 +3,6 @@ import React, { Fragment, useState } from "react";
 const Input = () => {
   const [description, setDescription] = useState("");
 
-  // creat todo function
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
@@ -14,15 +13,15 @@ const Input = () => {
         body: JSON.stringify(body),
       });
 
-      /window.location = "/";
+      window.location = "/Profile";
     } catch (err) {
       console.error(err.message);
     }
   };
 
   return (
-    <Fragment>
-      <h1 className="text-center mt-5">Todo List</h1>
+    <div>
+      <h1 className="text-center mt-5">Your exercises List</h1>
       <form className="d-flex mt-5" onSubmit={onSubmitForm}>
         <input
           type="text"
@@ -32,7 +31,7 @@ const Input = () => {
         />
         <button className="btn btn-success">Add</button>
       </form>
-    </Fragment>
+    </div>
   );
 };
 
