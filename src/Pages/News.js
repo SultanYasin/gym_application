@@ -1,5 +1,3 @@
-
-
 import { Box } from "@mui/material";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
@@ -21,40 +19,49 @@ function News() {
   }, [searchQuery]);
 
   return (
-    <Box mt="50px" ml="50px">
-      <h2>Here you gonna see the news of sport and health</h2>
+    <Box mt="50px" >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <p>
+          <h2 style={{ margin: "auto" }}>
+            search for sport, health & fitness news
+          </h2>
+        </p>
+        <div>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+            placeholder="Search for news"
+            style={{
+              fontSize: "16px",
+              border: "2px solid #ccc",
+              borderRadius: "4px",
+              marginRight: "10px",
+              width: "74%",
+            }}
+          />
 
-      
-      <div style={{ display: "flex", alignItems: "center", marginTop: "20px"}}>
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(event) => setSearchQuery(event.target.value)}
-          placeholder="Search for news"
-          style={{
-            padding: "10px",
-            fontSize: "16px",
-            border: "2px solid #ccc",
-            borderRadius: "4px",
-            marginRight: "10px",
-          }}
-        />
-
-        <button
-          
-          onClick={getArticles}
-          style={{
-            background: "#4CAF50",
-            color: "#fff",
-            padding: "10px",
-            borderRadius: "4px",
-            border: "none",
-            fontSize: "16px",
-            cursor: "pointer",
-          }}
-        >
-          Search
-        </button>
+          <button
+            onClick={getArticles}
+            style={{
+              background: "#4CAF50",
+              color: "#fff",
+              padding: "10px",
+              borderRadius: "4px",
+              border: "none",
+              fontSize: "16px",
+              cursor: "pointer",
+            }}
+          >
+            Search
+          </button>
+        </div>
       </div>
 
       {articles.map((article) => {

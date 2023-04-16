@@ -5,7 +5,7 @@ import Input from "./Input";
 
 function ExercisesList() {
   return (
-    <div style={{maxWidth: '70%', margin:"auto"}}>
+    <div style={{maxWidth: '65%', margin:"auto"}}>
      
         <Input />
         <List />

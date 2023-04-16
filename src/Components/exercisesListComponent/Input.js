@@ -27,6 +27,7 @@ const Input = () => {
           type="text"
           className="form-control"
           value={description}
+          placeholder="Add an exercise 💪😁"
           onChange={(e) => setDescription(e.target.value)}
         />
         <button className="btn btn-success">Add</button>
