@@ -73,6 +73,39 @@ app.delete("/todos/:id", async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-  console.log("server has started on port 5000");
+
+app.post("/measurements", async (req, res) => {
+  try {
+    const { date, chest, biceps, shoulders } = req.body;
+    const newMeasurement = await pool.query(
+      "INSERT INTO measurements (date, chest, biceps, shoulders) VALUES($1, $2, $3, $4) RETURNING *",
+      [date, chest, biceps, shoulders]
+    );
+
+    res.json(newMeasurement.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.get('/measurements', async (req, res) => {
+  // This code attempts to retrieve measurements from a database,
+  // but if an error occurs, it will be caught and handled by the error middleware.
+  try {
+    const measurements = await db.getMeasurements();
+    res.send(measurements);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Error middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send({ error: 'Internal server error' });
+});
+
+app.listen(() => {
+  console.log(`Server has started on port 5000`);
 });

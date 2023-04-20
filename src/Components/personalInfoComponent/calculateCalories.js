@@ -50,7 +50,7 @@ function CalorieCalculator() {
         display: "flex",
         flexDirection: "column",
         maxWidth: "50%",
-        margin: "10vh auto ",
+        margin: "7vh auto ",
       }}
     >
       <TextField
@@ -91,12 +91,13 @@ function CalorieCalculator() {
       <br />
 
       <FormControl component="fieldset">
-        <FormLabel component="legend">PAL</FormLabel>
+        <FormLabel component="legend">Physical Activity Level</FormLabel>
         <RadioGroup
           aria-label="PAL"
           name="pal"
           value={pal}
           onChange={(e) => setPal(e.target.value)}
+
         >
           <FormControlLabel value="1.2" control={<Radio />} label="Sedentary" />
           <FormControlLabel
@@ -131,3 +132,4 @@ function CalorieCalculator() {
 }
 
 export default CalorieCalculator;
+
