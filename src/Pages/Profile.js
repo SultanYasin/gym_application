@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import ExercisesList from "../components/exercisesListComponent/Exercises";
 import CalculateCalories from "../components/personalInfoComponent/calculateCalories";
 import { useNavigate } from "react-router-dom";
@@ -12,59 +12,81 @@ function Profile() {
     useState(false);
   const navigate = useNavigate();
 
-  const logout =()=>{
-    navigate("/")
-}
+  const logout = () => {
+    navigate("/login");
+    auth.signOut();
+    localStorage.removeItem("email");
+  };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
       } else {
-        setUser(null);
+        logout();
       }
     });
-  }, [auth]);
+
+    return unsubscribe;
+  }, [auth, navigate]);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       setUser(user);
+  //     } else {
+  //       setUser(null);
+  //     }
+  //   });
+  // }, [auth]);
 
   const handleExercisesList = () => {
-    navigate('/profile/exercisesList')
+    navigate("/profile/exercisesList");
   };
   const handleCalculateCalories = () => {
-    navigate('/profile/calculateCalories');
+    navigate("/profile/calculateCalories");
   };
   const handleProcess = () => {
-    navigate('/profile/mussleSizeForm');
+    navigate("/profile/mussleSizeForm");
   };
 
   const buttonStyles = {
-    backgroundColor: '#4caf50',
-    border: 'none',
-    color: 'white',
-    padding: '12px 24px',
-    textAlign: 'center',
-    textDecoration: 'none',
-    display: 'inline-block',
-    fontSize: '16px',
-    margin: '4px 2px',
-    cursor: 'pointer',
-    borderRadius: '4px',
+    backgroundColor: "#4caf50",
+    border: "none",
+    color: "white",
+    padding: "12px 24px",
+    textAlign: "center",
+    textDecoration: "none",
+    display: "inline-block",
+    fontSize: "16px",
+    margin: "4px 2px",
+    cursor: "pointer",
+    borderRadius: "4px",
   };
 
-
   return (
-    <div style={{display : "flex" , justifyContent:"center", marginTop:"10vh"}} >
+    <div
+      style={{ display: "flex", justifyContent: "center", marginTop: "10vh" }}
+    >
       <button type="button" onClick={handleExercisesList} style={buttonStyles}>
         Add Workout
       </button>
       {showListComponent && <ExercisesList />}
 
-      <button type="button" onClick={handleCalculateCalories} style={buttonStyles}>
+      <button
+        type="button"
+        onClick={handleCalculateCalories}
+        style={buttonStyles}
+      >
         Calculate calories & BMR
       </button>
       {showCalculateCaloriesComponent && <CalculateCalories />}
 
-      <button type="button" onClick={handleProcess} style={buttonStyles}>Track your process</button>
-      <button onClick={logout} style={buttonStyles} >Logout</button>
+      <button type="button" onClick={handleProcess} style={buttonStyles}>
+        Track your process
+      </button>
+      <button onClick={logout} style={buttonStyles}>
+        Logout
+      </button>
     </div>
   );
 }

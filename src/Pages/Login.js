@@ -13,7 +13,7 @@ function SignIn() {
     signInWithPopup(auth, provider).then((data) => {
       setValue(data.user.email);
       localStorage.setItem("email", data.user.email);
-      navigate("/Profile")
+      navigate("/profile");
     });
   };
 
@@ -23,7 +23,7 @@ function SignIn() {
 
   return (
     <div>
-      {value ? (
+      {localStorage.getItem("email") ? (
         <Profile />
       ) : (
         <button onClick={handleClick}>Signin With Google</button>
