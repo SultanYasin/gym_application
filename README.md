@@ -1,5 +1,5 @@
-# React Fitness Application
+Examen:
 
-![React Fitness Application](https://i.ibb.co/Yt9spGc/image.png)
+make sure to run the server ( cd server -> node index.js ) to be able to use the crud function
 
-## Launch your development career with project-based coaching - https://www.jsmastery.pro
+you can signin only by using google email, more coming soon
